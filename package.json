@@ -1,0 +1,25 @@
+{
+	"name": "NodeJS_Custom_Build",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "https://github.com/ino20ain01/NodeJS-Custom-Build.git",
+	"author": "ChungNQ",
+	"license": "MIT",
+	"dependencies": {
+		"cookie-parser": "^1.4.3",
+		"express": "^4.16.3",
+		"mongoose": "^5.3.2",
+		"mongoose-auto-increment": "^5.0.1",
+		"pug": "^2.0.3"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.1.2",
+		"@babel/core": "^7.1.2",
+		"@babel/node": "^7.0.0",
+		"@babel/preset-env": "^7.1.0",
+		"nodemon": "^1.18.4"
+	},
+	"scripts": {
+		"start": "nodemon --exec babel-node ./index.js"
+	}
+}
