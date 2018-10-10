@@ -1,11 +1,10 @@
 import express from 'express';
-import { CategoryModel } from '../model/CategoryModel';
+import { UserModel } from '../model/UserModel';
 const router = express.Router();
 
-router.get('/', async function(req, res) {
-    const listCategories = await CategoryModel.getCategories();
-    console.log(listCategories);
-    res.render('index');
+router.get('/list-users', async function(req, res) {
+    const listUsers = await UserModel.getAllUsers();
+    res.status(200).json(listUsers);
 });
 
 export default router;
