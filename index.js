@@ -16,4 +16,10 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, "src/views"));
 app.use('/auth', authrouter);
 
+app.use(function(req, res, next) {
+    if (req.headers && req.headers.authorization && ) {
+
+    }
+});
+
 app.listen(port, () => console.log(`🚀   Server ready at http://localhost:${ port }`))

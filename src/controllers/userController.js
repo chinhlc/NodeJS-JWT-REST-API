@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import { userModel } from '../models/UserModel';
+import { UserModel } from '../models/UserModel';
 import bcrypt from 'bcrypt';
 
 export const Register = function(req, res) {
-    const newUser = new userModel(req.body);
+    const newUser = UserModel.createUser(req.body);
     newUser.password = bcrypt.hashSync(req.body.password, 10);
     newUser.save(function(err, user) {
         if (err) {
