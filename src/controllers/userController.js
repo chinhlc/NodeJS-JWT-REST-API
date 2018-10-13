@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jsonWebToken from 'jsonwebtoken';
 import { UserModel } from '../models/UserModel';
 import bcrypt from 'bcrypt';
 
@@ -18,9 +18,29 @@ export const Register = function(req, res) {
 }
 
 export const SignIn = function(req, res) {
-
-}
-
-export const LoginRequired = function(req, res) {
-
+    UserModel.getOneUser(req.body.email).exec(function(err, user) {
+        if (err) throw err;
+        if (!user) {
+            res.status(401).json({ message: 'Authentication failed! User not found!' });
+        } else {
+            if (!user.comparePassword(req.body.password)) {
+                res.status(401).json({ message: 'Authentication failed! Wrong password!' })
+            } else {
+                user.password = undefined;
+                return (
+                    res
+                        .json({ token: jsonWebToken.sign(
+                            {
+                                id: user.id,
+                                email: user.email,
+                                user_name: user.user_name
+                            }, 
+                            'private_key_example', 
+                            { expiresIn: '1h' }
+                        ) 
+                    })
+                );
+            }
+        }
+    });
 }
