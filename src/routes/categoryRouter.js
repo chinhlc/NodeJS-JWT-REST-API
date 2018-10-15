@@ -1,9 +1,9 @@
 import express from 'express';
 import { signInRequired } from '../middlewares/authMiddleware';
-import { listCategory } from '../controllers/categoryController';
+import { getAllCategories } from '../controllers/categoryController';
 
 const router = express.Router();
 
-router.get('/list-category', signInRequired, listCategory);
+router.get('/get-all-category', signInRequired, getAllCategories);
 
 export default router;

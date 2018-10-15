@@ -35,7 +35,7 @@ export const SignIn = function(req, res) {
                                 email: user.email,
                                 user_name: user.user_name
                             }, 
-                            'private_key_example', 
+                            'private_key', 
                             { expiresIn: '1h' }
                         ) 
                     })
